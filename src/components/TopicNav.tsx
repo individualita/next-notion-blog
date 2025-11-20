@@ -1,18 +1,19 @@
 'use client';
 import { usePosts } from '../context/PostsContext';
 
-
 type Orientation = 'vertical' | 'horizontal';
 
 interface TopicNavProps {
     orientation?: Orientation;
 }
 
-export const TopicNav = ({
-    orientation = 'vertical',
-}: TopicNavProps) => {
+export const TopicNav = ({ orientation = 'vertical' }: TopicNavProps) => {
     const isHorizontal = orientation === 'horizontal';
-    const { topics, setSelectedTopic } = usePosts();
+    const { topics, setSelectedTopic, selectedTopic } = usePosts();
+
+    const baseClassesHorizontal =
+        'whitespace-nowrap px-4 py-2 transition-colors hover:text-black';
+    const baseClassesVertical = 'text-left transition-colors hover:text-black';
 
     return (
         <nav
@@ -22,25 +23,33 @@ export const TopicNav = ({
                     : 'flex flex-col gap-2 text-sm text-gray-600'
             }
         >
+            {/* All topics button */}
             <button
                 onClick={() => setSelectedTopic(null)}
                 className={
-                    isHorizontal
-                        ? ' font-semibold whitespace-nowrap px-4 py-2  transition-colors hover:text-black'
-                        : ' font-semibold text-left transition-colors hover:text-black '
+                    (isHorizontal
+                        ? baseClassesHorizontal
+                        : baseClassesVertical) +
+                    (selectedTopic === null
+                        ? ' text-black font-semibold underline'
+                        : ' text-gray-600')
                 }
             >
-                {'All topics'}
+                All topics
             </button>
-            {topics.map(topic => (
 
+            {/* Topics */}
+            {topics.map(topic => (
                 <button
                     key={topic}
                     onClick={() => setSelectedTopic(topic)}
                     className={
-                        isHorizontal
-                            ? ' text-left whitespace-nowrap px-4 py-2 font-medium transition-colors hover:text-black'
-                            : 'text-left transition-colors hover:text-black'
+                        (isHorizontal
+                            ? baseClassesHorizontal
+                            : baseClassesVertical) +
+                        (selectedTopic === topic
+                            ? ' text-black font-semibold underline'
+                            : ' text-gray-600')
                     }
                 >
                     {topic}

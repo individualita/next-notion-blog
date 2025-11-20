@@ -1,4 +1,3 @@
-'use client';
 import { Sidebar } from './Sidebar';
 import { TopicBar } from './TopicBar';
 import PostsList from './PostsList';
