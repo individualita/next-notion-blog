@@ -35,8 +35,8 @@ export const Header = () => {
                         <button className='cursor-pointer rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900'>
                             Log in
                         </button>
-                        <button className='cursor-pointer rounded-md bg-black px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-gray-800'>
-                            Get Notion free
+                        <button  className='cursor-pointer rounded-md bg-black px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-gray-800'>
+                            Get notion 
                         </button>
                         <BurgerBtn
                             isOpen={isMenuOpen}

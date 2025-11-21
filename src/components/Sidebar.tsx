@@ -11,8 +11,7 @@ export const Sidebar = () => {
                    <strong>Next</strong>  <br />&  <span className='font-serif italic text-gray-800'>Notion</span>
                 </h1>
                 <p className='text-sm text-gray-500'>
-                    Thoughts on the future of work, from the people and teams
-                    creating it.
+Exploring ideas with Notion, publishing them with Next.js.
                 </p>
             </div>
 

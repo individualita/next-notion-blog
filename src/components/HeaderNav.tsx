@@ -1,5 +1,9 @@
+'use client';
+
 import Link from 'next/link';
 import { headerLinks } from './navigation';
+
+import { usePathname } from 'next/navigation';
 
 type Orientation = 'horizontal' | 'vertical';
 
@@ -14,6 +18,8 @@ export const HeaderNav = ({
     className = '',
     onNavigate,
 }: HeaderNavProps) => {
+    const pathname = usePathname();
+
     const baseClasses =
         orientation === 'horizontal'
             ? 'flex items-center gap-1 text-sm text-gray-600'
@@ -21,17 +27,24 @@ export const HeaderNav = ({
 
     return (
         <nav className={`${baseClasses} ${className}`.trim()}>
-            {headerLinks.map((link) => (
-                <Link
-                    key={link.label}
-                    href={link.href}
-                    onClick={onNavigate}
-                    className='rounded-md px-3 py-2 font-medium transition-colors hover:bg-gray-100 hover:text-gray-900'
-                >
-                    {link.label}
-                </Link>
-            ))}
+            {headerLinks.map(link => {
+                const isActive = pathname === link.href;
+
+                return (
+                    <Link
+                        key={link.label}
+                        href={link.href}
+                        onClick={onNavigate}
+                        className={`rounded-md px-3 py-2 font-medium transition-colors ${
+                            isActive
+                                ? ' text-black  '
+                                : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                        }`}
+                    >
+                        {link.label}
+                    </Link>
+                );
+            })}
         </nav>
     );
 };
-
