@@ -1,36 +1,124 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Notion-Powered Blog
 
-## Getting Started
+A modern, performant blog built with Next.js and Notion API, featuring advanced caching strategies and server-side rendering.
 
-First, run the development server:
+## 🎯 Project Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+This project started as an exploration of headless CMS solutions. After comparing Contentful and Notion API, I chose to build with Notion because:
+- I already use Notion daily for notes and learning materials
+- Wanted to learn how Notion API integrates with Next.js
+- Opportunity to turn my personal knowledge base into a public blog
+
+## ✨ Key Features
+
+- **📊 Notion as CMS**: Content managed directly in Notion with a familiar interface
+- **⚡ Advanced Caching**: Multi-layer caching strategy using `unstable_cache` 
+- **🚀 Performance Optimized**: 
+  - Server-side data fetching with 1-hour cache for post listings
+  - Minimized API calls to Notion (1 request/hour for homepage)
+- **🎨 Modern UI**: Clean, responsive design with Tailwind CSS
+- **🔍 Dynamic Filtering**: Client-side topic filtering without page reloads
+- **📱 Responsive**: Mobile-first design approach
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js (App Router)
+- **Language**: TypeScript
+- **CMS**: Notion API
+- **Styling**: Tailwind CSS
+- **Caching**: Next.js `unstable_cache`
+- **Rendering**: Server Components with selective client components
+
+## 🏗️ Architecture Highlights
+
+### Caching Strategy
+```typescript
+// List of posts: cached for 1 hour (all users share cache)
+fetchLivePages() → unstable_cache(3600s)
+
+// Individual post page: cached for 5 minutes
+fetchPageBySlug(slug) → unstable_cache(300s)
+
+// Post blocks/content: cached for 5 minutes
+fetchPageBlocks(pageId) → unstable_cache(300s)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Data Flow
+```
+Notion Database (Source of Truth)
+        ↓
+    Next.js API Layer (with caching)
+        ↓
+    Server Components (SSR/ISR)
+        ↓
+    Client Components (filtering only)
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📂 Project Structure
+```
+src/
+├── app/
+│   ├── layout.tsx              # Root layout with providers
+│   ├── page.tsx                # Homepage (post list)
+│   └── posts/[slug]/
+│       └── page.tsx            # Individual post page (ISR)
+├── components/
+│   ├── PostCard.tsx            # Post preview card
+│   ├── PostsList.tsx           # Posts grid (client-side filtering)
+│   ├── TopicNav.tsx            # Topic filter navigation
+│   ├── Sidebar.tsx             # Desktop sidebar
+│   └── TopicBar.tsx            # Mobile topic bar
+├── context/
+│   └── PostsContext.tsx        # Shared state for filtering
+└── lib/
+    ├── notion.ts               # Notion API functions with caching
+    ├── cacheConfig.ts          # Cache configuration constants
+    └── notionRenderer.ts       # Notion blocks → HTML renderer
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Getting Started
 
-## Learn More
+### Prerequisites
+- Node.js 18+
+- Notion account with a database set up
 
-To learn more about Next.js, take a look at the following resources:
+### Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Clone the repository
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. Install dependencies
+```bash
+npm install
+```
 
-## Deploy on Vercel
+3. Set up environment variables
+```bash
+# .env.local
+NOTION_TOKEN=your_notion_integration_token
+NOTION_DATA_SOURCE_ID=your_notion_database_id
+REVALIDATE_SECRET=your_secret_for_api_routes
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. Run the development server
+```bash
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. Open [http://localhost:3000](http://localhost:3000)
+
+## 📊 Notion Database Schema
+
+Your Notion database should have these properties:
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `title` | Title | Post title |
+| `slug` | Rich Text | URL-friendly slug |
+| `description` | Rich Text | Short description |
+| `topic` | Rich Text | Category/topic |
+| `tags` | Multi-select | Tags for filtering |
+| `status` | Status | Publish status ("Live" for published) |
+| `date` | Created time | Publication date |
+| `image` | Files | Cover image |
+
+
