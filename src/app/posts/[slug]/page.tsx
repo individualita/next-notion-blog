@@ -30,7 +30,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
             {/* Кнопка назад */}
                 <Link
                     href='/'
-                    className='inline-block  px-4 py-2 rounded-md bg-gray-100 hover:bg-gray-200 text-sm font-medium transition-colors'
+                    className='inline-block  mb-8 px-4 py-2 rounded-md bg-gray-100 hover:bg-gray-200 text-sm font-medium transition-colors'
                 >
                     ← Back to all posts
                 </Link>

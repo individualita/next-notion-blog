@@ -2,6 +2,8 @@
 
 A modern, performant blog built with Next.js and Notion API, featuring advanced caching strategies and server-side rendering.
 
+[Visit the blog](https://next-notion-blog-cyan.vercel.app/)
+
 ## 🎯 Project Overview
 
 This project started as an exploration of headless CMS solutions. After comparing Contentful and Notion API, I chose to build with Notion because:
