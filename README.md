@@ -95,8 +95,8 @@ npm install
 ```bash
 # .env.local
 NOTION_TOKEN=your_notion_integration_token
-NOTION_DATA_SOURCE_ID=your_notion_database_id
-REVALIDATE_SECRET=your_secret_for_api_routes
+NOTION_DATABASE_ID=your_notion_database_id
+NOTION_DATA_SOURCE_ID=your_notion_data_source_id
 ```
 
 4. Run the development server
