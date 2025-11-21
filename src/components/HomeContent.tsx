@@ -6,7 +6,7 @@ import { Container } from './Container';
 export default function HomeContent() {
     return (
         <>
-            <aside className='sticky top-16 hidden h-[calc(100vh-4rem)] w-80 overflow-y-auto border-r border-gray-200 bg-white lg:block'>
+            <aside className='sticky top-16 hidden h-[calc(100vh-4rem)] w-76 overflow-y-auto border-r border-gray-200 bg-white lg:block'>
                 <Sidebar />
             </aside>
 

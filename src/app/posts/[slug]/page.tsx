@@ -25,7 +25,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
     const html = await renderer.render(...blocks);
 
     return (
-        <article className='prose prose-lg mx-auto py-20 relative'>
+        <article className='prose prose-lg mx-auto py-20 relative text-gray-700'>
             <Container>
             {/* Кнопка назад */}
                 <Link

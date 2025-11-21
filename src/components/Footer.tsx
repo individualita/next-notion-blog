@@ -3,39 +3,30 @@ import { FooterSection } from './FooterSection';
 
 const footerData = [
     {
-        title: 'Product',
+        title: 'Docs',
         links: [
-            { label: 'AI', href: '#' },
-            { label: 'Docs', href: '#' },
-            { label: 'Wikis', href: '#' },
-            { label: 'Projects', href: '#' },
+            { label: 'Getting started', href: 'https://developers.notion.com/docs/getting-started' },
+            { label: 'Update guide 03-09-2025', href: 'https://developers.notion.com/docs/upgrade-guide-2025-09-03' },
+            { label: 'Query database', href: 'https://developers.notion.com/reference/post-database-query' },
         ],
     },
     {
-        title: 'Resources',
+        title: 'Info',
         links: [
-            { label: 'Blog', href: '#' },
-            { label: 'Guides', href: '#' },
-            { label: 'Templates', href: '#' },
-            { label: 'Help Center', href: '#' },
+            { label: 'Wiki', href: 'https://en.wikipedia.org/wiki/Notion_(productivity_software)' },
+            { label: 'Templates', href: 'https://www.notion.com/templates?srsltid=AfmBOortA63MgNr1_M1pDBpSuFNg7bwYmjbv0sspbPUgBO4aOb1UZ3DM' },
         ],
     },
     {
-        title: 'Company',
+        title: 'Packages',
         links: [
-            { label: 'About', href: '#' },
-            { label: 'Careers', href: '#' },
-            { label: 'Media Kit', href: '#' },
+            { label: 'Notionhq/client', href: 'https://www.npmjs.com/package/@notionhq/client' },
+            { label: 'Render/client', href: 'https://www.npmjs.com/package/@notion-render/client' },
+            { label: 'Hljs-plugin', href: 'https://www.npmjs.com/package/@notion-render/hljs-plugin' },
+            {label: 'Bookmark plugin', href: 'https://www.npmjs.com/package/@notion-render/bookmark-plugin'}
         ],
     },
-    {
-        title: 'Download',
-        links: [
-            { label: 'iOS & Android', href: '#' },
-            { label: 'Mac & Windows', href: '#' },
-            { label: 'Web Clipper', href: '#' },
-        ],
-    },
+
 ];
 
 export const Footer = () => {

@@ -5,66 +5,49 @@ export default function AboutPage() {
         <section className='py-12 flex flex-1 items-center justify-center'>
             <Container>
                 <article className='prose mx-auto '>
-                    <h1>🚀 Эксперимент с Notion API и Next.js</h1>
-
-                    <p>
-                        Когда я решил запустить блог, первым делом встал вопрос
-                        —<strong> на чём строить контент?</strong> Я смотрел в
-                        сторону Contentful и Notion API. В итоге для основного
-                        проекта выбрал Contentful: он даёт больше возможностей
-                        для роста и гибкости.
+                    <h3 className='text-3xl font-bold text-gray-900 mb-6'>
+                        About
+                    </h3>
+                    <p className='text-lg text-gray-700 leading-relaxed mb-4'>
+                        This project was created as a test of the{' '}
+                        <strong>Notion API</strong> — to see how Notion pages
+                        can be turned into a working blog. The idea was simple:
+                        write posts directly in Notion, fetch them through the
+                        API, and render them with Next.js.
                     </p>
-
-                    <p>
-                        Но любопытство не отпускало 🙂 Я параллельно собрал
-                        отдельный проект на{' '}
-                        <strong>Notion API + Next.js</strong>. Это был чистый
-                        эксперимент: хотелось проверить, насколько удобно вести
-                        записи в Notion и сразу превращать их в статьи.
+                    <p className='text-lg text-gray-700 leading-relaxed mb-4'>
+                        It’s not meant to be a full‑scale CMS, but rather an
+                        experiment to explore:
                     </p>
-
-                    <p>
-                        Вдохновением стали блоги, которые живут прямо в Notion.
-                        Мне понравилась идея — писать заметки в привычном
-                        интерфейсе, а потом видеть их опубликованными на сайте.
-                    </p>
-
-                    <h2>✅ Что понравилось в Notion API</h2>
-                    <ul>
-                        <li>Очень простая интеграция с Next.js.</li>
-                        <li>Привычный интерфейс для ведения заметок.</li>
-                        <li>Идеально для прототипов и личных проектов.</li>
-                        <li>Минимализм — всё хранится в одном месте.</li>
+                    <ul className='list-disc  text-lg list-inside text-gray-700 mb-4 space-y-2'>
                         <li>
-                            Готовый <strong>Notion Renderer</strong> с
-                            плагинами: подсветка кода, красивые закладки и
-                            возможность расширять функционал.
+                            how different content formats (headings, lists,
+                            images, code blocks) can be displayed,
+                        </li>
+                        <li>
+                            how plugins like syntax highlighting and bookmarks
+                            improve the experience,
+                        </li>
+                        <li>
+                            and how lightweight a blog can be when powered by
+                            tools you already use every day.
                         </li>
                     </ul>
-
-                    <h2>⚠️ Что оказалось сложнее</h2>
-                    <ul>
-                        <li>
-                            Нет удобного способа делать сложные выборки
-                            (например, «все посты по тегу X, отсортированные по
-                            дате»). .
-                        </li>
-                        <li>Нет инструментов для редакторов и маркетинга.</li>
-                        <li>
-                            API работает медленнее, чем специализированные
-                            CMS.Часто приходится делать несколько запросов,
-                            чтобы собрать страницу.
-                        </li>
-                        <li>Масштабировать проект непросто.</li>
-                    </ul>
-
-                    <h2>📌 Итог</h2>
-                    <p>
-                        Основной блог я веду на Contentful, но эксперимент с
-                        Notion API оказался очень полезным. Я попробовал разные
-                        подходы, увидел их плюсы и минусы и, главное, получил
-                        вдохновение и новый опыт :)
+                    <p className='text-lg text-gray-700 leading-relaxed mb-4'>
+                        {' '}
+                        Design inspiration? I basically took Notion’s design and
+                        made just a tiny tweak. Honestly, their clean layout was
+                        too good not to borrow — and it fits perfectly for a
+                        lightweight blog experiment.
                     </p>
+
+                    <p className='text-lg text-gray-700 leading-relaxed'>
+                        👉 In short: this is a side project, built for fun and
+                        learning, showing what’s possible when you connect
+                        Notion with modern web frameworks.
+                    </p>
+
+
                 </article>
             </Container>
         </section>
