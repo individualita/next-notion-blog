@@ -24,7 +24,7 @@ export const fetchLivePages = unstable_cache(
                 property: 'status',
                 status: { equals: 'live' },
             },
-              sorts: [{ property: 'date', direction: 'descending' }],
+            sorts: [{ property: 'date', direction: 'descending' }],
         });
         return response;
     },
@@ -60,10 +60,22 @@ export const fetchPageBySlug = (slug: string) =>
         },
     )();
 
-export async function fetchPageBlocks(pageId: string) {
-    const response = await notion.blocks.children.list({
-        block_id: pageId,
-    });
-
-    return response.results as BlockObjectResponse[];
-}
+export const fetchPageBlocks = (pageId: string) =>
+    unstable_cache(
+        async () => {
+            console.log(
+                '🔥 ЗАПРОС fetchPageBlocks:',
+                pageId,
+                new Date().toISOString(),
+            );
+            const response = await notion.blocks.children.list({
+                block_id: pageId,
+            });
+            return response.results as BlockObjectResponse[];
+        },
+        ['page-blocks', pageId], 
+        {
+            revalidate: CACHE_TIMES.PAGE_BY_SLUG, // 5 минут (как и сама страница)
+            tags: [CACHE_TAGS.BLOCKS(pageId)], // для ручной ревалидации
+        },
+    )();

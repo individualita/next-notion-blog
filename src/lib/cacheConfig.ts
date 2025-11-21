@@ -7,4 +7,5 @@ export const CACHE_TIMES = {
 export const CACHE_TAGS = {
     POSTS: 'notion-posts',
     POST: (slug: string) => `post-${slug}`,
+    BLOCKS: (pageId: string) => `blocks-${pageId}`,
 };

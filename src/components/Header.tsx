@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
+//components
 import { HeaderNav } from './HeaderNav';
 import { BurgerBtn } from './BurgerBtn';
 import { MobileMenu } from './MobileMenu';

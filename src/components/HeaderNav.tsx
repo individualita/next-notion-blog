@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { headerLinks } from './navigation';
 
 type Orientation = 'horizontal' | 'vertical';
@@ -21,14 +22,14 @@ export const HeaderNav = ({
     return (
         <nav className={`${baseClasses} ${className}`.trim()}>
             {headerLinks.map((link) => (
-                <a
+                <Link
                     key={link.label}
                     href={link.href}
                     onClick={onNavigate}
                     className='rounded-md px-3 py-2 font-medium transition-colors hover:bg-gray-100 hover:text-gray-900'
                 >
                     {link.label}
-                </a>
+                </Link>
             ))}
         </nav>
     );

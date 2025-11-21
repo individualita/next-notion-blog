@@ -15,11 +15,11 @@ export default function HomeContent() {
                 <TopicBar />
 
                 {/* content  */}
-                <main className='flex-1 py-10'>
+                <section className='flex-1 py-10'>
                     <Container>
                         <PostsList />
                     </Container>
-                </main>
+                </section>
             </div>
         </>
     );

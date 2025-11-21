@@ -35,6 +35,7 @@ export default function PostCard({
                                 fill
                                 sizes='(min-width: 1024px) 50vw, 100vw'
                                 className='h-full w-full object-cover transition-transform duration-300 group-hover:scale-105'
+                                loading='eager'
                             />
                             <span className='absolute right-2 bottom-2 px-2 py-0.5 text-xs bg-gray-600 text-gray-300'>
                                 {topic}
@@ -70,18 +71,21 @@ export default function PostCard({
                         {description}
                     </p>
                 )}
-
-                {/* Meta Info */}
-                <div className='flex items-center gap-3 text-sm text-gray-500'>
-                    <span className='font-bold'>romaw3b</span>
-                    <span>
-                        <span>
-                            published:{' '}
-                            {new Date(date).toISOString().split('T')[0]}
-                        </span>
-                    </span>
-                </div>
             </Link>
+
+            {/* Meta Info */}
+            <div className='flex items-center gap-3 text-sm text-gray-500'>
+                <a
+                    href='https://www.romaw3b.com'
+                    target='_blank'
+                    className='font-bold hover:underline'
+                >
+                    romaw3b
+                </a>
+                <span>
+                    published: {new Date(date).toISOString().split('T')[0]}
+                </span>
+            </div>
         </article>
     );
 }

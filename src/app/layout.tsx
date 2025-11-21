@@ -1,12 +1,11 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { fetchLivePages } from '../lib/notion';
 
 import './globals.css';
 
+//components
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
-
 
 const inter = Inter({
     subsets: ['latin', 'cyrillic'],
@@ -31,10 +30,11 @@ export default function RootLayout({
             >
                 <Header />
 
-                <div className='min-h-screen pt-16'>
-                    <div className='flex'>{children}</div>
-                    <Footer />
-                </div>
+                <main className='min-h-screen pt-16 flex '>
+                    {/* children будет flex-элементом */}
+                    {children}
+                </main>
+                <Footer />
             </body>
         </html>
     );

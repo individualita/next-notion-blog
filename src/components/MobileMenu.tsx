@@ -1,7 +1,6 @@
 'use client';
 
 import { HeaderNav } from './HeaderNav';
-import { TopicNav } from './TopicNav';
 
 interface MobileMenuProps {
     onClose: () => void;
