@@ -7,7 +7,7 @@ export default function PostsList() {
     const { filteredPosts } = usePosts();
 
     return (
-        <section className='grid gap-10 md:gap-12 md:grid-cols-2'>
+        <div className='grid gap-20 md:gap-12 md:grid-cols-2'>
             {filteredPosts.map((page: any) => {
                 const title =
                     page.properties.title?.title[0]?.plain_text ??
@@ -40,6 +40,6 @@ export default function PostsList() {
                     />
                 );
             })}
-        </section>
+        </div>
     );
 }
