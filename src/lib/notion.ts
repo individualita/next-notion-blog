@@ -35,8 +35,7 @@ export const fetchLivePages = unstable_cache(
     },
     ['notion-pages'], // cache key
     {
-        // revalidate: CACHE_TIMES.LIVE_PAGES, // 1 hour
-        revalidate: 100,
+        revalidate: CACHE_TIMES.LIVE_PAGES, // 1 hour
         tags: [CACHE_TAGS.POSTS],
     },
 );

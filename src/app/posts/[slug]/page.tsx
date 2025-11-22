@@ -1,9 +1,9 @@
-
 import { fetchPageBySlug, fetchPageBlocks } from '@/src/lib/notion';
 import Link from 'next/link';
+import { renderer } from '@/src/lib/notionRenderer';
+
 import { Container } from '@/src/components/Container';
 
-import { renderer } from '@/src/lib/notionRenderer';
 
 export default async function Post({ params }: { params: { slug: string } }) {
     const { slug } = await params;
@@ -21,12 +21,14 @@ export default async function Post({ params }: { params: { slug: string } }) {
     const html = await renderer.render(...blocks);
 
     return (
-        <article className='prose prose-lg mx-auto py-20 relative text-gray-700 
+        <article
+            className='prose prose-lg mx-auto py-20 relative text-gray-700 
             prose-pre:p-4 prose-pre:overflow-x-auto prose-pre:rounded-md prose-pre:text-sm prose-pre:max-w-full prose-pre:whitespace-pre-wrap prose-pre:wrap-break-word
             prose-img:mx-auto prose-img:max-w-full prose-img:h-auto
             prose-table:overflow-x-auto prose-table:block prose-table:max-w-full prose-table:text-sm
             prose-a:text-sm
-            '>
+            '
+        >
             <Container>
                 <Link
                     href='/'
@@ -35,7 +37,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
                     ← Back to all posts
                 </Link>
 
-                {/* Контент поста */}
+                {/* Post content */}
                 <div dangerouslySetInnerHTML={{ __html: html }} />
             </Container>
         </article>

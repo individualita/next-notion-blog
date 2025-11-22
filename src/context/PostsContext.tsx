@@ -8,8 +8,6 @@ import {
     SetStateAction,
 } from 'react';
 
-import { PageObjectResponse } from '@notionhq/client';
-
 type PostsContextType = {
     results: any[];
     topics: string[];

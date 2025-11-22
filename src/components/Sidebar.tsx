@@ -8,10 +8,13 @@ export const Sidebar = () => {
                     Notion like blog
                 </p>
                 <h1 className='mb-4 mt-3 text-4xl  '>
-                   <strong>Next</strong>  <br />&  <span className='font-serif italic text-gray-800'>Notion</span>
+                    <strong>Next</strong> <br />&{' '}
+                    <span className='font-serif italic text-gray-800'>
+                        Notion
+                    </span>
                 </h1>
                 <p className='text-sm text-gray-500'>
-Exploring ideas with Notion, publishing them with Next.js.
+                    Exploring ideas with Notion, publishing them with Next.js.
                 </p>
             </div>
 

@@ -65,7 +65,6 @@ export default function PostCard({
                     {title}
                 </h2>
 
-                {/* Excerpt */}
                 {description && (
                     <p className='text-gray-600 mb-4 line-clamp-4'>
                         {description}

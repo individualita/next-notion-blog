@@ -13,7 +13,8 @@ export const TopicNav = ({ orientation = 'vertical' }: TopicNavProps) => {
 
     const baseClassesHorizontal =
         'whitespace-nowrap px-4 py-2 transition-colors hover:text-black cursor-pointer';
-    const baseClassesVertical = 'text-left transition-colors hover:text-black cursor-pointer';
+    const baseClassesVertical =
+        'text-left transition-colors hover:text-black cursor-pointer';
 
     return (
         <nav

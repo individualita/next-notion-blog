@@ -1,6 +1,11 @@
-'use client';
 import { Container } from '@/src/components/Container';
+import { ContactLink } from '@/src/components/ContactLink';
 
+const links = [
+    { href: 'https://www.linkedin.com/in/romaw3b', label: 'LinkedIn' },
+    { href: 'https://github.com/individualita', label: 'GitHub' },
+    { href: 'https://www.romaw3b.com', label: 'My website' },
+];
 export default function ContactPage() {
     return (
         <section className='flex flex-1 items-center justify-center '>
@@ -10,27 +15,13 @@ export default function ContactPage() {
                     <p className='text-gray-700 font-serif'>Find me on:</p>
 
                     <div className='flex justify-center gap-6 font-serif'>
-                        <a
-                            href='https://www.linkedin.com/in/romaw3b'
-                            target='_blank'
-                            className='text-gray-700 hover:text-sky-600 transition-colors'
-                        >
-                            LinkedIn
-                        </a>
-                        <a
-                            href='https://github.com/individualita'
-                            target='_blank'
-                            className='text-gray-700 hover:text-sky-600 transition-colors'
-                        >
-                            GitHub
-                        </a>
-                        <a
-                            href='https://www.romaw3b.com'
-                            target='_blank'
-                            className='text-gray-700 hover:text-sky-600 transition-colors '
-                        >
-                            My website
-                        </a>
+                        {links.map(link => (
+                            <ContactLink
+                                key={link.href}
+                                href={link.href}
+                                label={link.label}
+                            />
+                        ))}
                     </div>
                 </div>
             </Container>

@@ -31,7 +31,6 @@ export default function RootLayout({
                 <Header />
 
                 <main className='min-h-screen pt-16 flex '>
-                    {/* children будет flex-элементом */}
                     {children}
                 </main>
                 <Footer />

@@ -1,9 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { headerLinks } from './navigation';
-
 import { usePathname } from 'next/navigation';
+
+import { headerLinks } from './navigation';
 
 type Orientation = 'horizontal' | 'vertical';
 

@@ -10,13 +10,11 @@ export default function PostsList() {
         <div className='grid gap-20 md:gap-12 md:grid-cols-2'>
             {filteredPosts.map((page: any) => {
                 const title =
-                    page.properties.title?.title[0]?.plain_text ??
-                    'No title';
+                    page.properties.title?.title[0]?.plain_text ?? 'No title';
                 const description =
                     page.properties.description?.rich_text[0]?.plain_text;
                 const slug =
-                    page.properties.slug?.rich_text[0]?.plain_text ??
-                    'No slug';
+                    page.properties.slug?.rich_text[0]?.plain_text ?? 'No slug';
                 const tags = page.properties.tags?.multi_select ?? [];
                 const date = page.properties.date?.created_time ?? '';
                 const imageUrl =
@@ -25,7 +23,6 @@ export default function PostsList() {
                     page.properties.topic?.rich_text[0]?.plain_text ??
                     'no topic';
 
-                
                 return (
                     <PostCard
                         key={page.id}
