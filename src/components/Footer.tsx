@@ -34,7 +34,7 @@ export const Footer = () => {
         <footer className='border-t border-gray-200 py-12'>
             <Container>
                 {/* wrapper */}
-                <div className='grid grid-cols-2 md:grid-cols-4 gap-8 text-sm'>
+                <div className='grid grid-cols-2 md:grid-cols-3  gap-8 text-sm justify-center'>
                     {footerData.map(section => (
                         <FooterSection
                             key={section.title}
