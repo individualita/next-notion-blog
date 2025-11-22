@@ -8,7 +8,7 @@ import {
     SetStateAction,
 } from 'react';
 
-
+import { PageObjectResponse } from '@notionhq/client';
 
 type PostsContextType = {
     results: any[];
@@ -41,8 +41,6 @@ export function PostsProvider({
         ),
     ).sort();
 
-
-
     const filteredPosts = selectedTopic
         ? results.filter(
               (p: any) =>
@@ -50,7 +48,6 @@ export function PostsProvider({
                   selectedTopic,
           )
         : results;
-        
 
     return (
         <PostsContext.Provider
