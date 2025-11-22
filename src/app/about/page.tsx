@@ -24,10 +24,7 @@ export default function AboutPage() {
                             how different content formats (headings, lists,
                             images, code blocks) can be displayed,
                         </li>
-                        <li>
-                            how plugins like syntax highlighting and bookmarks
-                            improve the experience,
-                        </li>
+                        <li>how plugins improve the experience,</li>
                         <li>
                             and how lightweight a blog can be when powered by
                             tools you already use every day.
@@ -40,14 +37,6 @@ export default function AboutPage() {
                         too good not to borrow — and it fits perfectly for a
                         lightweight blog experiment.
                     </p>
-
-                    <p className='text-lg text-gray-700 leading-relaxed'>
-                        👉 In short: this is a side project, built for fun and
-                        learning, showing what’s possible when you connect
-                        Notion with modern web frameworks.
-                    </p>
-
-
                 </article>
             </Container>
         </section>

@@ -1,6 +1,5 @@
 'use client';
 import { Container } from '@/src/components/Container';
-import Link from 'next/link';
 
 export default function ContactPage() {
     return (

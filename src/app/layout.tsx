@@ -14,7 +14,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-    title: 'Notion-like blog :)',
+    title: 'Next & Notion blog ',
     description: 'created by romaw3b',
 };
 

@@ -5,12 +5,17 @@ import { unstable_cache } from 'next/cache';
 
 import { CACHE_TIMES, CACHE_TAGS } from './cacheConfig';
 
+// ---------------------------------------------
+// Initialize Notion client
+// ---------------------------------------------
 export const notion = new Client({
     auth: process.env.NOTION_TOKEN,
     notionVersion: '2025-09-03',
 });
 
-// Список всех постов (кеш 1 час)
+// ---------------------------------------------
+// Fetch all published posts (cached for 1 hour)
+// ---------------------------------------------
 export const fetchLivePages = unstable_cache(
     async () => {
         console.log(
@@ -30,13 +35,15 @@ export const fetchLivePages = unstable_cache(
     },
     ['notion-pages'], // cache key
     {
-        // revalidate: CACHE_TIMES.LIVE_PAGES, // 1 час
+        // revalidate: CACHE_TIMES.LIVE_PAGES, // 1 hour
         revalidate: 100,
         tags: [CACHE_TAGS.POSTS],
     },
 );
 
-//slug!!!!!!!!!
+// ---------------------------------------------
+// Helper: fetch a single page by slug
+// ---------------------------------------------
 const _fetchPageBySlug = (slug: string) =>
     notion.dataSources.query({
         data_source_id: process.env.NOTION_DATA_SOURCE_ID!,
@@ -46,7 +53,9 @@ const _fetchPageBySlug = (slug: string) =>
         },
     });
 
-// Страница по slug (кеш 5 минут)
+// ---------------------------------------------
+// Fetch a single page by slug (cached for 5 minutes)
+// ---------------------------------------------
 export const fetchPageBySlug = (slug: string) =>
     unstable_cache(
         async () => {
@@ -55,11 +64,14 @@ export const fetchPageBySlug = (slug: string) =>
         },
         ['page-by-slug', slug],
         {
-            revalidate: CACHE_TIMES.PAGE_BY_SLUG, //5 минут
-            tags: [CACHE_TAGS.POST(slug)],
+            revalidate: CACHE_TIMES.PAGE_BY_SLUG, //5 minutes
+            tags: [CACHE_TAGS.POST(slug)], // tag for manual revalidation
         },
     )();
-
+// ---------------------------------------------
+// Fetch all blocks (content) of a page
+// Cached for 5 minutes (same as the page itself)
+// ---------------------------------------------
 export const fetchPageBlocks = (pageId: string) =>
     unstable_cache(
         async () => {
@@ -73,9 +85,9 @@ export const fetchPageBlocks = (pageId: string) =>
             });
             return response.results as BlockObjectResponse[];
         },
-        ['page-blocks', pageId], 
+        ['page-blocks', pageId],
         {
-            revalidate: CACHE_TIMES.PAGE_BY_SLUG, // 5 минут (как и сама страница)
-            tags: [CACHE_TAGS.BLOCKS(pageId)], // для ручной ревалидации
+            revalidate: CACHE_TIMES.PAGE_BY_SLUG, // 5 minutes
+            tags: [CACHE_TAGS.BLOCKS(pageId)], // tag for manual revalidation
         },
     )();

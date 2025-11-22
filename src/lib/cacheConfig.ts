@@ -1,4 +1,3 @@
-//Это конфиг для нашего  кешика в notion.ts
 export const CACHE_TIMES = {
     LIVE_PAGES: 3600, // 1 час
     PAGE_BY_SLUG: 300, // 5 минут
