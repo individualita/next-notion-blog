@@ -19,7 +19,7 @@ export const notion = new Client({
 export const fetchLivePages = unstable_cache(
     async () => {
         console.log(
-            '🔥 РЕАЛЬНЫЙ ЗАПРОС К NOTION API FETCHLIVEPAGES',
+            '🔥 Real request to Notion API [FETCHLIVEPAGES]',
             new Date().toISOString(),
         );
 
@@ -75,7 +75,7 @@ export const fetchPageBlocks = (pageId: string) =>
     unstable_cache(
         async () => {
             console.log(
-                '🔥 ЗАПРОС fetchPageBlocks:',
+                '🔥 Request [fetchPageBlocks]',
                 pageId,
                 new Date().toISOString(),
             );
